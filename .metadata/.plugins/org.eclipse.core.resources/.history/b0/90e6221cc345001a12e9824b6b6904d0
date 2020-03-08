@@ -1,0 +1,21 @@
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+import javafx.application.Application;
+import javafx.stage.Stage;
+
+public class HelloWorld extends JFrame {
+
+	public HelloWorld() {
+		AddressAPI api = new AddressAPI();
+		String location = "A";
+		api.imageDownload(location);
+		JLabel googleMap = new JLabel(api.getMap(location));
+		api.fileDelete(location);
+		add(googleMap);
+
+		setTitle("naver map");
+		setVisible(true);
+		pack();
+	}
+}

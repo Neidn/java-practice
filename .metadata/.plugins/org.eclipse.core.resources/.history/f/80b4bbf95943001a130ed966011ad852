@@ -1,0 +1,45 @@
+package Ans200130;
+
+public class Card {
+	private String cardVal;
+
+	public String getCardVal() {
+		return cardVal;
+	}
+
+	// 디폴트 생성자
+	public Card() {
+		int suit = (int) (Math.random() * CardUtil.SUIT.length);
+		int valu = (int) (Math.random() * CardUtil.VALU.length);
+		cardVal = CardUtil.SUIT[suit] + CardUtil.VALU[valu];
+	}
+
+	public Card(String s) {
+		this.cardVal = s;
+	}
+
+	// 복사생성자
+	public Card(Card c) {
+		this(c.getCardVal());
+	}
+
+	@Override
+	public String toString() {
+		return "[" + cardVal + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cardVal == 0) ? 0 : cardVal.hashCode());
+		return;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		return super.equals(obj);
+	}
+
+}

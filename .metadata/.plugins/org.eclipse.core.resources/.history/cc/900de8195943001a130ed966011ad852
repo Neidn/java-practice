@@ -1,0 +1,9 @@
+package Ans200130;
+
+public class p104 {
+	public static void main(String[] args) {
+		Card c1 = new Card("H4");
+		Card c2 = new Card("H4");
+		Card c3 = new Card(c1);
+	}
+}

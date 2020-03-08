@@ -1,0 +1,40 @@
+package Ans200130;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class CardCase {
+	private List<Card> cards = new ArrayList<Card>();
+
+	public CardCase() {
+		cards.clear();
+	}
+
+	public List<Card> getCards() {
+		return cards;
+	}
+
+	public int count() {
+		return cards.size();
+	}
+
+	public Card getCard(int index) {
+		return cards.get(index);
+	}
+
+	// 서로다른 카드 20장 만들기
+	public void make() {
+		cards.clear();
+		int suit = CardUtil.SUIT.length;
+		int valu = CardUtil.VALU.length;
+		int count = 0;
+
+		while (count != value * suit) {
+			Card c = new Card();
+			if (!cards.contains(c)) {
+				cards.add(c);
+				count++;
+			}
+		}
+	}
+}

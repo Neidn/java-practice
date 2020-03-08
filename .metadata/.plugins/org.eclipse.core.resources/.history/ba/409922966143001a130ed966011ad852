@@ -1,0 +1,117 @@
+package Ans200130;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+public class CardCase {
+	private List<Card> cards = new ArrayList<Card>();
+
+	public CardCase() {
+		cards.clear();
+	}
+
+	public List<Card> getCards() {
+		return cards;
+	}
+
+	public int count() {
+		return cards.size();
+	}
+
+	public Card getCard(int index) {
+		return cards.get(index);
+	}
+
+	// 서로다른 카드 20장 만들기
+	public void make() {
+		cards.clear();
+		int suit = CardUtil.SUIT.length;
+		int valu = CardUtil.VALU.length;
+		int count = 0;
+
+		while (count != valu * suit) {
+			Card c = new Card();
+			if (!cards.contains(c)) {
+				cards.add(c);
+				count++;
+			}
+		}
+	}
+
+	// 콜렉션스에 셔플이라ㅡㄴㄴ 메소드가 존재
+	// 리스트를 섞는다
+	public void shuffle() {
+		Collections.shuffle(cards);
+	}
+
+	public void print() {
+		int valu = CardUtil.VALU.length;
+		for (int i = 0; i < cards.size(); i++) {
+			Card c = cards.get(i);
+			System.out.printf("%s", c.toString());
+			if ((i + 1) % valu == 0)
+				System.out.println();
+		}
+	}
+
+	// 정렬하기 위해서 comparator를 구현한다
+//	public void sort() {
+//		cards.sort(new CardComp());
+//	}
+//
+//	public void rsort() {
+//		cards.sort(new CardRomp());
+//	}
+	// 람다식으로 카드정렬을 표현할 수 있다
+	// 인터페이스를 구현하는 클래스를 만들지 않고도 바로 할 수 있다
+	public void sort() {
+		Comparator<Card> cmp = new Comparator<Card>() {
+			@Override
+			public int compare(Card c1, Card c2) {
+				return c1.getCardVal().compareTo(c2.getCardVal());
+			}
+
+		};
+		cards.sort(cmp);
+	}
+
+	public void rsort() {
+		cards.sort(new Comparator<Card>() {
+
+			@Override
+			public int compare(Card c1, Card c2) {
+				return -c1.getCardVal().compareTo(c2.getCardVal());
+			}
+
+		});
+	}
+
+	// 이제 위의 두개를 더 줄일수 있다
+	// compare가 위의 경우 클래스와 메소드 선언을 각각 해주었으니
+	// 아래와 같이 한번만 할경우 둘다 생략하여 (인자)->{바디;}
+	// 형식으로 사용이 가능한것이 람다식이다
+	public void lambdasort() {
+		cards.sort((c1, c2) -> {
+			return c1.getCardVal().compareTo(c2.getCardVal());
+		});
+	}
+
+	// 각 인터페이스별로 사용할 수 있게끔 되어있다
+	// 동일한 메소드를 두번이상 사용할 경우 (타입::메소드명)으로 생략할 수 있다
+	public void lambdasort2() {
+		cards.sort(Comparator.comparing(Card::getCardVal));
+	}
+
+	public void lambdasort3() {
+		cards.sort(Card::compareCard);
+	}
+
+	public void lambdarsort() {
+		cards.sort((c1, c2) -> {
+			return -c1.getCardVal().compareTo(c2.getCardVal());
+		});
+	}
+
+}

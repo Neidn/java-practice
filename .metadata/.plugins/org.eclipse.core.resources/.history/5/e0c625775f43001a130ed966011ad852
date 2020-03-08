@@ -1,0 +1,90 @@
+package Ans200130;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+public class CardCase {
+	private List<Card> cards = new ArrayList<Card>();
+
+	public CardCase() {
+		cards.clear();
+	}
+
+	public List<Card> getCards() {
+		return cards;
+	}
+
+	public int count() {
+		return cards.size();
+	}
+
+	public Card getCard(int index) {
+		return cards.get(index);
+	}
+
+	// 서로다른 카드 20장 만들기
+	public void make() {
+		cards.clear();
+		int suit = CardUtil.SUIT.length;
+		int valu = CardUtil.VALU.length;
+		int count = 0;
+
+		while (count != valu * suit) {
+			Card c = new Card();
+			if (!cards.contains(c)) {
+				cards.add(c);
+				count++;
+			}
+		}
+	}
+
+	// 콜렉션스에 셔플이라ㅡㄴㄴ 메소드가 존재
+	// 리스트를 섞는다
+	public void shuffle() {
+		Collections.shuffle(cards);
+	}
+
+	public void print() {
+		int valu = CardUtil.VALU.length;
+		for (int i = 0; i < cards.size(); i++) {
+			Card c = cards.get(i);
+			System.out.printf("%s", c.toString());
+			if ((i + 1) % valu == 0)
+				System.out.println();
+		}
+	}
+
+	// 정렬하기 위해서 comparator를 구현한다
+//	public void sort() {
+//		cards.sort(new CardComp());
+//	}
+//
+//	public void rsort() {
+//		cards.sort(new CardRomp());
+//	}
+	// 람다식으로 카드정렬을 표현할 수 있다
+	// 인터페이스를 구현하는 클래스를 만들지 않고도 바로 할 수 있다
+	public void sort() {
+		Comparator<Card> cmp = new Comparator<Card>() {
+			@Override
+			public int compare(Card c1, Card c2) {
+				return c1.getCardVal().compareTo(c2.getCardVal());
+			}
+
+		};
+		cards.sort(cmp);
+	}
+
+	public void rsort() {
+		Comparator<Card> rcmp = new Comparator<Card>() {
+
+			@Override
+			public int compare(Card c1, Card c2) {
+				return -c1.getCardVal().compareTo(c2.getCardVal());
+			}
+
+		};
+	}
+}

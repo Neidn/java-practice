@@ -1,0 +1,8 @@
+package Ans200131;
+
+public class Sutda {
+	CardCase cc = new CardCase();
+	CardRule rule = new CardRule();
+	Card[] cc1 = new Card()[CardUtil.SUTDA];
+	Card[] cc2 = new Card()[CardUtil.SUTDA];
+}

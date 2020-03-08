@@ -1,0 +1,42 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+
+public class example {
+
+	public static void main(String[] args) {
+		String clientId = "rk42k1c8hn "; // clientId
+		String clientSecret = "1geFmLjYzfIorQEuzxH0WNhrM6zLhDdQgvjeLxfn "; // clientSecret
+
+		try {
+			String addr = URLEncoder.encode("광주광역시 북구 하백로 46번길 10", "UTF-8"); // 주소입력
+			String apiURL = "https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode?query=" + addr; // json
+			URL url = new URL(apiURL);
+			HttpURLConnection con = (HttpURLConnection) url.openConnection();
+			con.setRequestMethod("GET");
+			con.setRequestProperty("X-NCP-APIGW-API-KEY-ID", clientId);
+			con.setRequestProperty("X-NCP-APIGW-API-KEY", clientSecret);
+			int responseCode = con.getResponseCode();
+			BufferedReader br;
+			if (responseCode == 200) {
+				br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+			} else {
+				br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+			}
+			String inputLine;
+			ArrayList<String> response = new ArrayList<String>();
+			while ((inputLine = br.readLine()) != null) {
+				response.add(inputLine);
+			}
+			br.close();
+			for (String i : response) {
+				System.out.println(i);
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+}

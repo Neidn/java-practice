@@ -1,0 +1,10 @@
+package Ans200131;
+
+public class OddMageSquare {
+	private int[][] magic;
+	private int n;
+
+	public int[][] getMagic() {
+		return magic;
+	}
+}

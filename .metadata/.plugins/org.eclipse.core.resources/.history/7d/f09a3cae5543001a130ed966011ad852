@@ -1,0 +1,17 @@
+package Ans200130;
+
+public class Card {
+	private String cardVal;
+
+	public String getCardVal() {
+		return cardVal;
+	}
+
+	public Card() {
+		this("H2");
+	}
+
+	public Card(String s) {
+		this.cardVal = s;
+	}
+}

@@ -1,0 +1,24 @@
+package Ans200130;
+
+public class CardRule {
+	/**
+	 * C3C8 3000 38광땡 C1C3 C1C8 2000 광땡 CTST x100 1000 장떙 CXSX x100 X00 구땡 C1S2 C2S1
+	 * 99 알리 C1S4 S1C4 98 독사 C1S9 S9C1 97 삥 C1ST STC1 96 장삥 CTS4 STC4 95 장사 C4S6
+	 * S4C6 94 세륙 끗 X 10
+	 */
+	public int toV(Card c) {
+		int count = 0;
+		switch (c.getCardVal().charAt(1)) {
+		case 'A':
+			count = 1;
+			break;
+		case 'T':
+			count = 10;
+			break;
+		default:
+			count = c.getCardVal().charAt(1) - '0';
+			break;
+		}
+		return count;
+	}
+}

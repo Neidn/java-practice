@@ -1,0 +1,24 @@
+package Ans200130;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class CardCase {
+	private List<Card> cards = new ArrayList<Card>();
+
+	public CardCase() {
+		cards.clear();
+	}
+
+	public List<Card> getCards() {
+		return cards;
+	}
+
+	public int count() {
+		return cards.size();
+	}
+
+	public Card getCard(int index) {
+		return cards.get(index);
+	}
+}

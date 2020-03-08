@@ -1,0 +1,28 @@
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+
+public class p97 extends Application {
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		primaryStage.setTitle("Billboard Chart 2017");
+		BorderPane root = (BorderPane) FXMLLoader.load(getClass().getResource("Billboardfx2.fxml"));
+		// 가로 1400 세로 800 설정
+		Scene scene = new Scene(root, 1400, 800);
+		// css파일을 읽어 scene에 대입
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		// 대입된 scene을 대입
+		primaryStage.setScene(scene);
+		// 로고 이미지를 삽입
+		primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("logo.png")));
+		// 크기 수정 불가능 설정
+		primaryStage.setResizable(false);
+		primaryStage.show();
+
+	}
+
+}

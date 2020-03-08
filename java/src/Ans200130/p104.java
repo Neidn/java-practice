@@ -1,0 +1,28 @@
+package Ans200130;
+
+public class p104 {
+	public static void main(String[] args) {
+		Card c1 = new Card("H4");
+		Card c2 = new Card("H4");
+		Card c3 = new Card(c1);
+		// 다른 인스턴스이므로 해시코드값은 다르다
+		System.out.println(c1.hashCode());
+		System.out.println(c2.hashCode());
+		// 해시코드값은 다르나 가지고 있는 값은 동일하다
+		System.out.println(c1.getCardVal());
+		System.out.println(c2.getCardVal());
+		// 해시코드값을 비교한다
+		System.out.println(c1.equals(c2));
+		// 복사하여 대입하였으므로 값은 동일하나 다른객체 이므로 해시코드값은 다르다
+		System.out.println(c1.equals(c3));
+
+		for (int i = 0; i < CardUtil.SUIT.length; i++) {
+			for (int j = 0; j < CardUtil.VALU.length; j++) {
+				Card c = new Card();
+				System.out.printf("%s\t", c);
+			}
+			System.out.println();
+		}
+
+	}
+}

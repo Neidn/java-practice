@@ -1,0 +1,28 @@
+package Ans200131;
+
+public class OddMageSquare {
+	private int[][] magic;
+	private int n;
+
+	public int[][] getMagic() {
+		return magic;
+	}
+
+	public OddMageSquare(int n) {
+		magic = new int[n][n];
+		this.n = n;
+	}
+
+	public OddMageSquare() {
+		this(3);
+	}
+
+	public void play() {
+		int x = 0;
+		int y = n / 2;
+		for (int i = 1; i <= n * n; i++) {
+			int temX = x;
+			int temY = y;
+		}
+	}
+}

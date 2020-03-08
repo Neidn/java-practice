@@ -1,0 +1,18 @@
+package Ans200130;
+
+public class p104 {
+	public static void main(String[] args) {
+		Card c1 = new Card("H4");
+		Card c2 = new Card("H4");
+		Card c3 = new Card(c1);
+		// 다른 인스턴스이므로 해시코드값은 다르다
+		System.out.println(c1.hashCode());
+		System.out.println(c2.hashCode());
+		// 해시코드값은 다르나 가지고 있는 값은 동일하다
+		System.out.println(c1.getCardVal());
+		System.out.println(c2.getCardVal());
+		System.out.println(c1.equals(c2));
+		System.out.println(c1.equals(c3));
+
+	}
+}
